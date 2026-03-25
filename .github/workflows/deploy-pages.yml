@@ -31,10 +31,20 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Compute Base Path
+        id: base_path
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            echo "base_path=/" >> "$GITHUB_OUTPUT"
+          else
+            echo "base_path=/$REPO_NAME/" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_BASE_PATH: ${{ steps.base_path.outputs.base_path }}
           VITE_ROUTER_MODE: hash
 
       - name: Configure Pages

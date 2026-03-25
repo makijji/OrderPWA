@@ -39,7 +39,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,json}'],
-        navigateFallback: '/index.html',
+        navigateFallback: withBase('index.html'),
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.destination === 'document',
