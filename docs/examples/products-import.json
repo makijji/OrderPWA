@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Neutral Floor Cleaner",
+    "category": "Cleaning Chemicals",
+    "unit": "bottle",
+    "location": "Basement Storage",
+    "minStock": 3,
+    "defaultOrderQty": 10,
+    "supplier": "CleanCo Distributors",
+    "sku": "SKU-2001",
+    "notes": "Monthly high usage",
+    "isActive": true
+  },
+  {
+    "name": "Microfiber Cloth Blue",
+    "category": "Cleaning Accessories",
+    "unit": "box",
+    "location": "North Wing Closet",
+    "minStock": 4,
+    "defaultOrderQty": 12,
+    "supplier": "Hygiene Wholesale",
+    "sku": "SKU-2002",
+    "notes": "Color coded for sanitation",
+    "isActive": true
+  }
+]

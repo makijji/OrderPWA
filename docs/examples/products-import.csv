@@ -1,0 +1,6 @@
+name,category,unit,location,minStock,defaultOrderQty,supplier,sku,notes,isActive
+Neutral Floor Cleaner,Cleaning Chemicals,bottle,Basement Storage,3,10,CleanCo Distributors,SKU-2001,Monthly high usage,true
+Microfiber Cloth Blue,Cleaning Accessories,box,North Wing Closet,4,12,Hygiene Wholesale,SKU-2002,Color coded for sanitation,true
+Nitrile Gloves L,Consumables,box,Main Utility Room,6,20,Industrial Source,SKU-2003,Use powder-free,true
+Socket Wrench 12mm,Tools,pcs,Workshop Shelf A,1,2,ToolNet,SKU-2004,Keep one spare,true
+Bearing Seal Type A,Spare Parts,pcs,Workshop Shelf A,2,4,Facility Parts Ltd,SKU-2005,Machine line 2,false
