@@ -23,29 +23,47 @@ function NotFoundPage() {
 }
 
 export default function App() {
-  const Router = import.meta.env.VITE_ROUTER_MODE === 'hash' ? HashRouter : BrowserRouter
-  const basename = import.meta.env.BASE_URL
+  const useHashRouter = import.meta.env.VITE_ROUTER_MODE === 'hash'
 
   return (
     <AppDataProvider>
       <FeedbackProvider>
         <ThemeBootstrap />
-        <Router basename={basename}>
-          <Routes>
-            <Route element={<AppShell />}>
-              <Route path="/" element={<DashboardPage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/orders/new" element={<OrderEditorPage />} />
-              <Route path="/orders/:orderId" element={<OrderEditorPage />} />
-              <Route path="/orders/history" element={<OrderHistoryPage />} />
-              <Route path="/import" element={<ImportPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/home" element={<Navigate to="/" replace />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-          <PwaUpdatePrompt />
-        </Router>
+        {useHashRouter ? (
+          <HashRouter>
+            <Routes>
+              <Route element={<AppShell />}>
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/orders/new" element={<OrderEditorPage />} />
+                <Route path="/orders/:orderId" element={<OrderEditorPage />} />
+                <Route path="/orders/history" element={<OrderHistoryPage />} />
+                <Route path="/import" element={<ImportPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/home" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Route>
+            </Routes>
+            <PwaUpdatePrompt />
+          </HashRouter>
+        ) : (
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
+            <Routes>
+              <Route element={<AppShell />}>
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/orders/new" element={<OrderEditorPage />} />
+                <Route path="/orders/:orderId" element={<OrderEditorPage />} />
+                <Route path="/orders/history" element={<OrderHistoryPage />} />
+                <Route path="/import" element={<ImportPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/home" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Route>
+            </Routes>
+            <PwaUpdatePrompt />
+          </BrowserRouter>
+        )}
       </FeedbackProvider>
     </AppDataProvider>
   )
