@@ -23,7 +23,10 @@ function NotFoundPage() {
 }
 
 export default function App() {
-  const useHashRouter = import.meta.env.VITE_ROUTER_MODE === 'hash'
+  const isGithubPagesHost =
+    typeof window !== 'undefined' && window.location.hostname.endsWith('.github.io')
+  const useHashRouter = import.meta.env.VITE_ROUTER_MODE === 'hash' || isGithubPagesHost
+  const browserBasename = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL
 
   return (
     <AppDataProvider>
@@ -47,7 +50,7 @@ export default function App() {
             <PwaUpdatePrompt />
           </HashRouter>
         ) : (
-          <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <BrowserRouter basename={browserBasename}>
             <Routes>
               <Route element={<AppShell />}>
                 <Route path="/" element={<DashboardPage />} />
